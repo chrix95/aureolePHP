@@ -45,4 +45,20 @@ class UtilityController extends Controller
         curl_close($ch);
         return $resp;
     }
+
+    // get the query parameters for read all books request
+    public function checkQueryParams($request) {
+        $options = array();
+        if ($request->query('name')) {
+            $options['name'] = $request->query('name');
+        }
+        if ($request->query('country')) {
+            $options['country'] = $request->query('country');
+        }
+        if ($request->query('publisher')) {
+            $options['publisher'] = $request->query('publisher');
+        }
+        return $options;
+    }
+
 }

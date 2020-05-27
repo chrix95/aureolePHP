@@ -12,13 +12,23 @@ class BookController extends Controller
         $this->utility = $utility;
     }
 
-    public function index () {
-        $books = Book::all();
-        $status = '00';
+    public function index (Request $request) {
+        if ($request->query()) {
+            // define all the search query parameter (if available)
+            $options = $this->utility->checkQueryParams($request);
+            if ($request->query('release_date')) {
+                $books = Book::where($options)->date($request->query('release_date'))->get();
+            } else {
+                $books = Book::where($options)->get();
+            }
+        } else {
+            // return al books 
+            $books = Book::all();
+        }
         return response()->json([
-            'status_code'   =>  201,
+            'status_code'   =>  200,
             'status'        =>  'success',
-            'data'          =>  ['book' => $books]
+            'data'          =>  $books
         ], 200);
     }
 
@@ -152,4 +162,5 @@ class BookController extends Controller
             'data'          =>  $response['data']
         ]);
     }
+
 }

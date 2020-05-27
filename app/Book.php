@@ -26,4 +26,8 @@ class Book extends Model
         return unserialize($value);
     }
 
+    public function scopeDate($query, $date) {
+        return $query->where('release_date', 'LIKE', '%' . $date . '%');
+    }
+
 }

@@ -4,7 +4,7 @@ This project is build on a PHP framework Lumen (The stunningly fast micro-framew
 ## Project setup
 1. Install wampserver or xamp on your computer. The project uses PHP >= 7.2
 2. Clone the project into your local directory (www for wampserver users || htdocs for xamp users)
-3. Change into the directory using your cli
+3. Change into the directory using your command line interface (cmd)
 4. Install the required composer packages and dependencies for the project using the code below
 ```
 composer install
@@ -16,7 +16,7 @@ DB_PASSWORD=DATABASE_PASSWORD <br>
 DB_CONNECTION=mysql <br>
 DB_HOST=127.0.0.1 <br>
 Don't forget to run `php artisan key:generate` to generate a new key for your application
-6. Run `php artisan migrate` to migrate the create the `book` table into your database
+6. Run `php artisan migrate` to create the `book` table into your database
 7. Open your command line and change into your project directory
 
 ### Serving your application
