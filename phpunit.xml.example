@@ -17,9 +17,9 @@
         <env name="APP_ENV" value="testing"/>
         <env name="CACHE_DRIVER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
-        <env name="DB_DATABASE" value="aureoletest"/>
-        <env name="DB_USERNAME" value="root"/>
-        <env name="DB_PASSWORD" value=""/>
-        <env name="DB_HOST" value="127.0.0.1"/>
+        <env name="DB_DATABASE" value="DB_DATABASE"/>
+        <env name="DB_USERNAME" value="DB_USERNAME"/>
+        <env name="DB_PASSWORD" value="DB_PASSWORD"/>
+        <env name="DB_HOST" value="DB_HOST"/>
     </php>
 </phpunit>

@@ -35,17 +35,17 @@ class BookController extends Controller
     public function store (Request $request) {
         $book = array(
             'name'              =>  htmlentities(strip_tags(trim($request->name))),
-            'isbn'              =>  tmlentities(strip_tags(trim($request->isbn))),
-            'authors'           =>  tmlentities(strip_tags(trim($request->authors))),
-            'country'           =>  tmlentities(strip_tags(trim($request->country))),
-            'number_of_pages'   =>  tmlentities(strip_tags(trim($request->number_of_pages))),
-            'publisher'         =>  tmlentities(strip_tags(trim($request->publisher))),
-            'release_date'      =>  tmlentities(strip_tags(trim($request->release_date)))
+            'isbn'              =>  htmlentities(strip_tags(trim($request->isbn))),
+            'authors'           =>  $request->authors,
+            'country'           =>  htmlentities(strip_tags(trim($request->country))),
+            'number_of_pages'   =>  htmlentities(strip_tags(trim($request->number_of_pages))),
+            'publisher'         =>  htmlentities(strip_tags(trim($request->publisher))),
+            'release_date'      =>  htmlentities(strip_tags(trim($request->release_date)))
         );
         $validator = \Validator::make($book, [
             'name'              =>  'required|string|max:191',
-            'isbn'              =>  'required|string|',
-            'authors'           =>  'required|array|',
+            'isbn'              =>  'required|string',
+            'authors'           =>  'required|array',
             'country'           =>  'required|string|max:191',
             'number_of_pages'   =>  'required|numeric',
             'publisher'         =>  'required|string|max:191',
@@ -56,14 +56,14 @@ class BookController extends Controller
             return response()->json([
                 'status_code'   =>  406,
                 'status'        =>  'Validation Error',
-            ], 404);
+            ], 400);
         }
         Book::create($book);
         return response()->json([
             'status_code'   =>  201,
             'status'        =>  'success',
             'data'          =>  [ 'book' => $book ]
-        ], 200);
+        ], 201);
     }
 
     public function show ($id) {
@@ -130,7 +130,7 @@ class BookController extends Controller
                 return response()->json([
                     'status_code'   =>  406,
                     'status'        =>  'Validation Error',
-                ], 404);
+                ], 400);
             }
             $book_name = $book->name;
             $book->update($data);

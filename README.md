@@ -241,6 +241,23 @@ sample response
 }
 ```
 
+### Running the test
+1. Rename `phpunit.xml.example` to `phpunit.xml`
+2. Set your test DB environment variable within the phpunit.xml file
+```
+<env name="DB_DATABASE" value="DB_DATABASE"/>
+<env name="DB_USERNAME" value="DB_USERNAME"/>
+<env name="DB_PASSWORD" value="DB_PASSWORD"/>
+<env name="DB_HOST" value="DB_HOST"/>
+```
+3. Ensure you are on the project directory on your cmd and run the command below:
+```
+"./vendor/bin/phpunit"
+```
+```
+Note: If you are using windows cmd ensure the code above is written in `""`. An alternative is using WindowPowerShell and it doesn't require `""` to run the test
+```
+
 ### Available endpoints and payload
 You can import the postman collection for the project using the <a href="https://www.getpostman.com/collections/cc257a6e18e4ae34f8dc">URL</a>
 
