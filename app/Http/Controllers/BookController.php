@@ -17,13 +17,13 @@ class BookController extends Controller
             // define all the search query parameter (if available)
             $options = $this->utility->checkQueryParams($request);
             if ($request->query('release_date')) {
-                $books = Book::where($options)->date($request->query('release_date'))->get();
+                $books = Book::where($options)->date($request->query('release_date'))->orderBy('id', 'asc')->get();
             } else {
-                $books = Book::where($options)->get();
+                $books = Book::where($options)->orderBy('id', 'asc')->get();
             }
         } else {
             // return al books 
-            $books = Book::all();
+            $books = Book::orderBy('id', 'asc')->get();
         }
         return response()->json([
             'status_code'   =>  200,
@@ -154,13 +154,13 @@ class BookController extends Controller
                 'status_code'   =>  500,
                 'status'        =>  $response['message'],
                 'data'          =>  []
-            ]);
+            ], 500);
         }
         return response()->json([
             'status_code'   =>  200,
             'status'        =>  'success',
             'data'          =>  $response['data']
-        ]);
+        ], 200);
     }
 
 }

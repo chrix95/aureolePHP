@@ -255,7 +255,7 @@ sample response
 "./vendor/bin/phpunit"
 ```
 ```
-Note: If you are using windows cmd ensure the code above is written in `""`. An alternative is using WindowPowerShell and it doesn't require `""` to run the test
+Note: If you are using windows cmd ensure the code above is written with `""`. An alternative is using WindowPowerShell and it doesn't require `""` to run the test
 ```
 
 ### Available endpoints and payload
