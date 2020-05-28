@@ -12,25 +12,8 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return "Welcome to Aureole Book API";
 });
-
-// router.post('/', ValidationPolicy.create, BookController.create)
-// router.get('/', BookController.read)
-// router.get('/:id', BookController.show)
-// router.delete('/:id', BookController.destroy)
-// router.patch('/:id', ValidationPolicy.update, BookController.update)
-
-
-// $app->get('/', 'AuthorsController@index');
-// $app->post('/', 'AuthorsController@store');
-// // $app->get('/{id:[0-9]+}', [
-// $app->get('/{id:[\d]+}', [
-//     'as' => 'authors.show',
-//     'uses' => 'AuthorsController@show'
-// ]);
-// $app->put('/{id:[\d]+}', 'AuthorsController@update');
-// $app->delete('/{id:[\d]+}', 'AuthorsController@destroy');
 
 $router->group(['prefix' => 'api'], function ($router) {
     $router->get('external-books', 'BookController@externalBooks');
